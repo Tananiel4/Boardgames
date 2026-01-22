@@ -33,23 +33,29 @@ System stanowi aplikacją webową działającą w przeglądarce internetowej, za
 2.4 Ograniczenia
 •	System działa wyłącznie w środowisku przeglądarki internetowej
 •	Język interfejsu: polski
+
 3. Wymagania funkcjonalne
 3.1 Wyszukiwanie i filtrowanie gier
+
 3.1.1 Filtr według wieku
 •	System musi umożliwiać filtrowanie gier według wieku gracza
 •	Użytkownik może wybrać minimalny wiek gracza
 •	Możliwe wartości: 6+; 8+; 10+; 12+; 14+; 16+; 18+
+
 3.1.2 Filtr według liczby graczy
 •	System musi umożliwiać filtrowanie gier według liczby graczy
 •	Użytkownik może określić dokładną liczbę graczy
 •	System wyświetla tylko gry, które obsługują wybraną liczbę graczy
+
 3.1.3 Filtr według kategorii
 •	System musi umożliwiać filtrowanie gier według kategorii gry
 •	Możliwe wartości: strategiczne; rodzinne; imprezowe; kooperacyjne; ekonomiczne; przygodowe; karciane; wojenne; abstrakcyjne; dedukcyjne; dziecięce
+
 3.1.4 Kombinacja filtrów
 •	System musi umożliwiać jednoczesne stosowanie wielu filtrów
 •	Wyniki wyszukiwania muszą spełniać wszystkie wybrane kryteria
 •	System musi dynamicznie aktualizować wyniki po zmianie filtrów
+
 3.2 Dane gry planszowej
 Każda gra powinna zawierać co najmniej następujące informacje:
 •	Nazwa gry
@@ -60,23 +66,29 @@ Każda gra powinna zawierać co najmniej następujące informacje:
 •	Typ gry (np. strategiczna, rodzinna, imprezowa)
 •	Wstępny opis gry
 •	Średnia ocena gry (w skali 1-10)
+
 3.3 Wyświetlanie wyników wyszukiwania
 •	System musi prezentować wyniki w formie kafelków
 •	Wyniki powinny być czytelne i przejrzyste
+
 4. Wymagania niefunkcjonalne
+
 4.1 Wydajność
 •	System powinien zwracać wyniki filtrowania w czasie nie dłuższym niż 2 sekundy
 •	Zmiana filtrów powinna być płynna
+
 4.2 Użyteczność
 •	Interfejs użytkownika powinien być intuicyjny i łatwy w obsłudze
 •	Filtry powinny być wyraźnie widoczne i łatwo dostępne
 •	Nawigacja powinna być prosta i logiczna
+
 5. Wymagania techniczne
 •	Backend: Next.js API Routes, fast-xml-parser v5.3.3
 •	Frontend: Next.js 16.1.1 (App Router), UI: React 19.2.3, TypeScript5
 •	Baza danych: BoardGameGeek (BGG) API (format XML)
 •	Architektura: klient–serwer
 •	Model: aplikacja webowa
+
 6. Możliwe rozszerzenia systemu
 •	Konta użytkowników i listy ulubionych gier
 •	Dodatkowe filtry (wydawca, rok, wydania, poziom trudności)
@@ -84,4 +96,68 @@ Każda gra powinna zawierać co najmniej następujące informacje:
 •	Funkcja porównywania gier
 •	Wersja aplikacji mobilnej
 •	Wyświetlanie podstron prowadzących do każdej gry
+
+7. Testy
+
+Test 1 — Wyszukiwanie gry (podstawowe)
+•	Cel: Sprawdzenie, czy system potrafi wyszukać grę po nazwie.
+Kroki:
+•	Otworzyć stronę główną aplikacji.
+•	Wpisać nazwę gry w pole wyszukiwania (np. „Catan”).
+•	Kliknąć „Szukaj”.
+Oczekiwany wynik:
+•	System wyświetla listę gier zawierających wpisaną nazwę.
+•	Każda gra zawiera podstawowe informacje (nazwa, rok, liczba graczy, czas, wiek, ocena).
+
+________________________________________
+Test 2 — Filtr według wieku
+•	Cel: Sprawdzenie poprawności działania filtra wieku.
+Kroki:
+•	Wyszukać dowolną grę lub wyświetlić katalog.
+•	Wybrać filtr wieku „12+”.
+•	Zastosować filtr.
+Oczekiwany wynik:
+•	System wyświetla tylko gry, których minimalny wiek to 12+ lub więcej.
+•	Wyniki aktualizują się dynamicznie (bez odświeżania strony).	
+
+________________________________________
+Test 3 — Filtr według liczby graczy
+•	Cel: Sprawdzenie, czy system filtruje gry według liczby graczy.
+Kroki:
+•	Wybrać filtr liczby graczy: 4.
+•	Zastosować filtr.
+Oczekiwany wynik:
+•	System pokazuje tylko gry, które obsługują dokładnie 4 graczy (min ≤ 4 ≤ max).
+•	Brak wyników poza tym zakresem.
+
+________________________________________
+Test 4 — Filtr według kategorii
+•	Cel: Sprawdzenie poprawności działania filtra kategorii.
+Kroki:
+•	Wybrać kategorię „strategiczne”.
+•	Zastosować filtr.
+Oczekiwany wynik:
+•	System wyświetla tylko gry z kategorii „strategiczne”.
+
+________________________________________
+Test 5 — Kombinacja filtrów
+•	Cel: Sprawdzenie działania filtrów jednocześnie.
+Kroki:
+•	Wybrać wiek: 14+.
+•	Wybrać liczbę graczy: 2.
+•	Wybrać kategorię: „kooperacyjne”.
+•	Zastosować filtry.
+Oczekiwany wynik:
+•	System pokazuje gry spełniające wszystkie kryteria jednocześnie.
+•	Wyniki aktualizują się dynamicznie.
+
+________________________________________
+Test 6 — Czas odpowiedzi (wydajność)
+•	Cel: Sprawdzenie, czy filtrowanie działa szybko.
+Kroki:
+•	Wykonać filtr (np. wiek 10+, liczba graczy 3).
+•	Zmierzyć czas odpowiedzi.
+Oczekiwany wynik:
+•	Wyniki pojawiają się w czasie < 2 sekundy.
+
 
