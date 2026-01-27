@@ -35,7 +35,7 @@ Permission is hereby granted, free of charge, to any person obtaining a copy of 
 | I10 | Konta użytkownia | Graficzny interfejs użytkownika zapewniający intuicyjną obsługę aplikacji z wizualizacją danych | opcjonalne | Funkcjonalne |
 | I11 | Katalog zapisanych pozycji | Katalog w którym wyświetlane są zapisane gry planszowe który zainteresowały nas  | opcjonalne | Funkcjonalne |
 
-**Historyjka użytkownika**
+### Historyjka użytkownika
 
 **Jako:** użytkownik
 
